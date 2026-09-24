@@ -1,0 +1,8 @@
+/* Entinema: Un hombre es mortal. Sócrates es un hombre y por tanto mortal */
+
+hombre(socrates).
+hombre('Platon').
+
+mortal(P) :- hombre(P).
+
+persona(almirante).

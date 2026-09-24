@@ -1,0 +1,25 @@
+% nat(N) es true si N es número natural <- es un predicado
+% s(X) es el número natural que sigue a X <- es una funcion
+
+nat(0).
+nat(s(X)) :- nat(X).
+
+par(0).
+par(s(s(X))) :- par(X).
+
+impar(s(X)) :- par(X).
+
+suma(0,X,X).
+suma(s(X),Y,s(Z)) :- suma(X,Y,Z).
+
+resta(X,0,X).
+resta(s(X),s(Y),Z) :- resta(X,Y,Z).
+
+mult(0,X,0).
+mult(s(X),Y,Z) :- mult(X,Y,W), suma(W,Y,Z). % (x+1)*y = z :- x*y=z+y siendo z=x*y
+
+%x^0=1 x^1=x
+exp(X,0,s(0)).
+exp(0,X,0).
+exp(X,s(0),X).
+exp(X,s(Y),Z) :- exp(X,Y,W), mult(W,X,Z). %x^(y+1)=x^y*x | x^y*x=z 
