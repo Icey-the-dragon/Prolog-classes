@@ -1,0 +1,64 @@
+Objetivo: El alumno debera implementar un predicado 
+
+posorden(Arbol-binario,Posorden) 
+
+que se verificara si Posorden es la lista de etiquetas del arbol
+binario Arbol-binario recorrido en posorden. Se evitara el uso del
+predicado append, que se sustituira por la aplicación de técnicas de
+concatenación basadas en diferencias de listas.
+
+NOTA: Representaremos un arbol vacío mediante nil, y los términos no
+vacíos mediante la función arbol(Raiz,Izqd,Der), donde Raiz es la
+etiqueta del nodo raíz, mientras Izqd es el hijo izquierdo y Der es el
+derecho. Un nodo es hoja, si sus hijos son ambos nil.
+
+NOTA: El alumno puede partir de la versión sin diferencias de listas
+para la funcionalidad descrita:
+
+posorden(arbol(A,nil,nil),[A]) :-!.
+posorden(arbol(A,X,nil),S) :- posorden(X,C),append(C,[A],S).
+posorden(arbol(A,nil,X),S) :- posorden(X,C),append(C,[A],S).
+posorden(arbol(A,X,Y),S) :- posorden(X,C),posorden(Y,F),
+                            append(C,F,D),append(D,[A],S).
+
+Ejemplo:
+
+?- posorden(arbol(a,nil,nil),X).
+X = [a]
+
+Ejemplo: 
+
+?- posorden(arbol(a,arbol(b,nil,nil),nil),X).
+X = [b, a] 
+
+Ejemplo: 
+
+?- posorden(arbol(a,nil,arbol(b,nil,nil)),X).
+X = [b, a]
+
+Ejemplo: 
+
+?- posorden(arbol(a,arbol(b,arbol(c,nil, nil), 
+                            arbol(d,arbol(e,nil,nil),
+                                    arbol(f,nil,arbol(g,nil,nil)))),
+                    arbol(h,arbol(i,nil, nil), 
+                            arbol(j,arbol(k,nil,nil),
+                                    arbol(l,nil,arbol(m,nil,nil))))),X).
+X = [c, e, g, f, d, b, i, k, m|...] .
+
+Nota maxima: 1 pto
+
+Documentación a presentar: El código se subira a Faitic. El nombre del
+fichero estara formado por los apellidos de los autores en orden
+alfabético.
+
+Ej.- DarribaBilbao-VilaresFerro.pl
+
+Grupos: Se podra realizar individualmente o en grupos de dos personas.
+
+Defensa: Consistira en una demo al profesor, que calificara tanto los
+resultados como las respuestas a las preguntas que realice acerca de
+la implementación de la practica.
+
+Fecha de entrega y defensa: Mismo día de la practica.
+

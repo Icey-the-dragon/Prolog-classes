@@ -1,0 +1,55 @@
+/*arbol(a,arbol(b,arbol(c,nil, nil), 
+                 arbol(d,arbol(e,nil, nil),
+                         arbol(f,nil,arbol(g,nil,nil)))),
+         arbol(h,arbol(i,nil, nil), 
+                 arbol(j,arbol(k,nil,nil),
+                         arbol(l,nil,arbol(m,nil,nil)))))
+*/
+
+
+/*------------------------------------------------------------------*/
+/*76-Recorre un  árbol en preorden*/
+
+%preorden(arbol(A,nil,nil),[A]) :-!.
+%preorden(arbol(A,X,nil),[A|S]) :- preorden(X,S),!.
+%preorden(arbol(A,nil,X),[A|S]) :- preorden(X,S),!.
+%preorden(arbol(A,X,Y),[A|S]) :- preorden(X,T),preorden(Y,O),!,
+%			         append(T,O,S).
+
+preorden(Arbol,Preorden) :- preorden_dl(Arbol,Preorden-[]).
+preorden_dl(arbol(A,nil,nil),[A|X]-X):-!.
+preorden_dl(arbol(A,I,nil),[A|S]-X) :- preorden_dl(I,S-X),!.
+preorden_dl(arbol(A,nil,D),[A|S]-X) :- preorden_dl(D,S-X),!.
+preorden_dl(arbol(A,I,D),[A|T]-O) :- preorden_dl(I,T-X), preorden_dl(D,X-O),!.
+
+/*------------------------------------------------------------------*/
+/*77-Recorre un  árbol en inorden*/
+
+%inorden(arbol(A,nil,nil),[A]):-!.
+%inorden(arbol(A,X,nil),S) :- inorden(X,C),append(C,[A],S).
+%inorden(arbol(A,nil,X),[A|S]) :- inorden(X,S).
+%inorden(arbol(A,X,Y),S) :- inorden(X,C),inorden(Y,F),append(C,[A],D),
+%			    append(D,F,S).
+
+inorden(Arbol,Inorden) :- inorden_dl(Arbol, Inorden-[]).
+inorden_dl(arbol(A,nil,nil),[A|X]-X) :-!.
+inorden_dl(arbol(A,I,nil),C-X) :- inorden_dl(I,C-[A|X]).
+inorden_dl(arbol(A,nil,D),[A|S]-X) :- inorden_dl(D,S-X).
+inorden_dl(arbol(A,I,D),C-F) :- inorden_dl(I,C-[A|X]),inorden_dl(D,X-F).
+
+
+/*------------------------------------------------------------------*/
+/*78-Recorre un  árbol en posorden*/
+
+%posorden(arbol(A,nil,nil),[A]) :-!.
+%posorden(arbol(A,X,nil),S) :- posorden(X,C),append(C,[A],S).
+%posorden(arbol(A,nil,X),S) :- posorden(X,C),append(C,[A],S).
+%posorden(arbol(A,X,Y),S) :- posorden(X,C),posorden(Y,F),append(C,F,D),
+%			     append(D,[A],S).
+
+posorden(Arbol,Posorden) :- posorden_dl(Arbol, Posorden-[]).
+posorden_dl(arbol(A,nil,nil),[A|X]-X) :-!.
+posorden_dl(arbol(A,I,nil),C-X) :- posorden_dl(I,C-[A|X]).
+posorden_dl(arbol(A,nil,D),C-X) :- posorden_dl(D,C-[A|X]).
+posorden_dl(arbol(A,I,D),C-F) :- posorden_dl(I,C-X),posorden_dl(D,X-[A|F]).
+

@@ -1,0 +1,64 @@
+Objetivo: El alumno debera implementar un predicado 
+
+inorden(Arbol-binario,Inorden) 
+
+que se verificara si Inorden es la lista de etiquetas del arbol
+binario Arbol-binario recorrido en inorden. Se evitara el uso del
+predicado append, que se sustituira por la aplicación de tecnicas de
+concatenación basadas en diferencias de listas.
+
+NOTA: Representaremos un arbol vacio mediante nil, y los terminos no
+vacios mediante la función arbol(Raiz,Izqd,Der), donde Raiz es la
+etiqueta del nodo raiz, mientras Izqd es el hijo izquierdo y Der es el
+derecho. Un nodo es hoja, si sus hijos son ambos nil.
+
+NOTA: El alumno puede partir de la versión sin diferencias de listas
+para la funcionalidad descrita:
+
+inorden(arbol(A,nil,nil),[A]):-!.
+inorden(arbol(A,X,nil),S) :- inorden(X,C),append(C,[A],S).
+inorden(arbol(A,nil,X),[A|S]) :- inorden(X,S).
+inorden(arbol(A,X,Y),S) :- inorden(X,C),inorden(Y,F),
+                           append(C,[A],D), append(D,F,S).
+
+Ejemplo:
+
+?- inorden(arbol(a,nil,nil),X).
+X = [a].
+
+Ejemplo: 
+
+?- inorden(arbol(a,arbol(b,nil,nil),nil),X).
+X = [b, a]
+
+Ejemplo: 
+
+?- inorden(arbol(a,nil,arbol(b,nil,nil)),X).
+X = [a, b]
+
+Ejemplo: 
+
+?- inorden(arbol(a,arbol(b,arbol(c,nil, nil), 
+                           arbol(d,arbol(e,nil,nil),
+                                   arbol(f,nil,arbol(g,nil,nil)))),
+                 arbol(h,arbol(i,nil, nil), 
+                         arbol(j,arbol(k,nil,nil),
+                                 arbol(l,nil,arbol(m,nil,nil))))),X).
+X = [c, b, e, d, f, g, a, i, h|...] 
+
+Nota maxima: 1 pto
+
+Documentación a presentar: El código se subira a Faitic. El nombre del
+fichero estara formado por los apellidos de los autores en orden
+alfabetico.
+
+Ej.- DarribaBilbao-VilaresFerro.pl
+
+Grupos: Se podra realizar individualmente o en grupos de dos personas.
+
+Defensa: Consistira en una demo al profesor, que calificara tanto los
+resultados como las respuestas a las preguntas que realice acerca de
+la implementación de la practica.
+
+Fecha de entrega y defensa: Mismo dia de la practica.
+
