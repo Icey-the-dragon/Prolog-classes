@@ -1,0 +1,73 @@
+Deberes clase 7 de LC (12/11/2026)
+
+
+No lo manda Vilares ni es obligatorio, me lo invento yo para que practiquéis.
+
+
+###########################
+Ejercicio 1: No lo manda Vilares ni es obligatorio, me lo invento yo para que practiquéis.
+###########################
+
+Implementar un predicado ca1/2 de la siguiente forma:
+
+	ca1(ListaBinaria, ComplementaA1)
+
+donde ListaBinaria es una lista compuesta únicamente de 0 y 1 y ComplementoA1 es la lista
+resultante de hacer el complemento a1 de ListaBinaria. El complemento a1 de la lista vacía
+es la lista vacía.
+
+El complemento a1 es simplemente sustituir los 0 por 1 y viceversa.
+
+Preguntas ejemplo:
+-: ca1([1,0,1,0,1,0], X). -> X = [0,1,0,1,0,1]
+-: ca1([1], X). -> X = [0]
+-: ca1([0], X). -> X = [1]
+-: ca1([], X). -> X = []
+
+
+###########################
+Ejercicio 2: No lo manda Vilares ni es obligatorio, me lo invento yo para que practiquéis.
+###########################
+
+Hacer el árbol de resolución para la pregunta:
+-: ca1([1,0,1], X).
+
+Usando el código implementado en el ejercicio 1.
+
+
+###########################
+Ejercicio 3: No lo manda Vilares ni es obligatorio, me lo invento yo para que practiquéis.
+###########################
+
+Implementar un predicado ca2/2 de la siguiente forma:
+
+	ca2(ListaBinaria, ComplementaA1)
+
+donde ListaBinaria es una lista compuesta únicamente de 0 y 1 y ComplementoA2 es la lista
+resultante de hacer el complemento a2 de ListaBinaria. El complemento a2 de la lista vacía
+es la lista vacía.
+
+Para calcular el complemento a2 hay que recorrer el número binario de derecha a izquierda.
+Se dejan los 0 tal cual están hasta encontrar el primer 1. Una vez encontrado el primer 1,
+lo dejamos el 1 tal cual está y a partir de ahí intercambiamos 0 por 1 y viceversa (como 
+en el complemento a1). 
+
+Preguntas ejemplo:
+-: ca2([1,0,1,0,1,0], X). -> X = [0,1,0,1,1,0]
+-: ca2([1,0], X). -> X = [1,0]
+-: ca2([1,1], X). -> X = [0,1]
+-: ca2([1], X). -> X = [1]
+-: ca2([0], X). -> X = [0]
+-: ca2([], X). -> X = []
+
+
+
+###########################
+Ejercicio 4: No lo manda Vilares ni es obligatorio, me lo invento yo para que practiquéis.
+###########################
+
+Hacer el árbol de resolución para la pregunta:
+-: ca2([1,0,1], X).
+
+Usando el código implementado en el ejercicio 3.
+
