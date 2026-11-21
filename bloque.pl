@@ -6,10 +6,10 @@ primero([Car|_], Car).
 
 segundo([_, Car|_], Car).
 
-%  ultimo(L,E) es cierto sii E es el ultimo elemento de la lista L
+% %  ultimo(L,E) es cierto sii E es el ultimo elemento de la lista L
 
-ultimo([X], X).
-ultimo([_|L], E) :- ultimo(L, E).
+% ultimo([X], X).
+% ultimo([_|L], E) :- ultimo(L, E).
 
 %  ultimo(L,E) es cierto sii E es el ultimo elemento de la lista L
 
