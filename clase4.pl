@@ -9,7 +9,6 @@ inv_dl([Car|Cdr], X-Y) :- inv_dl(Cdr, X-[Car|Y]). % ejemplo: inv_dl([1,2|[3,4]],
 
 aplanar_dl([],X-X).
 aplanar_dl(Atomo, [Atomo]) :- atomic(Atomo), Atomo \== [].
-
 aplanar_dl([Car|Cdr], Aplanado-Z) :- aplanar_dl(Car, Aplanado-Y),
                                      aplanar_dl(Cdr, Y-Z).
 
